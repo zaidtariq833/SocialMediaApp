@@ -22,10 +22,10 @@ const LoginSection = () => {
       <TextField id="outlined-basic" label="Enter Email" variant="outlined" />
       <TextField id="outlined-basic" label="Enter Password" variant="outlined" />
       <Stack spacing={2}>
-      <Button variant="contained" className='w-full text-nowrap text-sm p-5'><GoogleIcon />Continue with Google</Button>
-      <Button variant="contained" className='w-full text-sm p-5 text-nowrap'><LocalPhoneIcon/>Continue with Phone</Button>
+      <Button variant="contained" className='w-full text-nowrap text-sm p-5 flex gap-2'><GoogleIcon />Continue with Google</Button>
+      <Button variant="contained" className='w-full text-sm p-5 text-nowrap flex gap-2'><LocalPhoneIcon/>Continue with Phone</Button>
       </Stack>
-       <Link href = {`/forgot-password`} className= "text-end relative top-[-5] text-sm">Forgot your password?</Link>
+       <Link href = {`/forgot-password`} className= "text-end relative top-[-5] text-sm underline text-red-500">Forgot your password?</Link>
       </div>
     </Box>
     </div>
