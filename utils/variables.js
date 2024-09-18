@@ -1,4 +1,4 @@
 "use client"
-import React from "react";
+// import React from "react";
 
-export const browserWidth = window.innerWidth
+// export const browserWidth = window.innerWidth

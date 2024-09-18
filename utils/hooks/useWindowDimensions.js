@@ -8,9 +8,10 @@ const useWindowDimensions = (windowWidth) => {
       const handleResize = () => setWidth(windowWidth);
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    }, [width]);
   
     return width;
   };
+
 
 export default useWindowDimensions;

@@ -1,17 +1,14 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid2';
 import LoginSection from './loginSection';
-import { browserWidth } from '../../../../utils/variables';
 import SideImages from './sideImage';
 import useWindowDimensions from '../../../../utils/hooks/useWindowDimensions';
 
 const CheckBrowser = () => {
+  const browserWidth = window.innerWidth;
   const windowDimensions = useWindowDimensions(browserWidth)
-
-  console.log(windowDimensions, "windpws")
-
   return (
     <div className='h-full'>
     {windowDimensions >= 768 ? (
