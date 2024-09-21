@@ -1,6 +1,11 @@
 import React from 'react'
 import CheckBrowser from '../components/loginComponents/checkBrowser'
 
+export const metadata = {
+  title: "Login",
+  description: "Login Page for Social Media App"
+}
+
 const page = () => {
   return (
     <CheckBrowser />
