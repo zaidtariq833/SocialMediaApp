@@ -7,12 +7,7 @@ import SideImages from './sideImage';
 import useWindowDimensions from '../../../../utils/hooks/useWindowDimensions';
 
 const CheckBrowser = () => {
-//   const browserWidth = window.innerWidth;
   const windowDimension = useWindowDimensions()
-//   console.log(browserWidth, "browser width")
-//   const windowDimensions = useMemo(() => {
-    //   return windowDimension
-//   }, [browserWidth])
   
   return (
     <div className='h-full'>
