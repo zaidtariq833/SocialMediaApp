@@ -2,6 +2,7 @@ import { Button, Grid } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
 import IntroCardSection from './introCardSection';
+import Link from 'next/link';
 
 
 const IntroHeader = () => {
@@ -19,7 +20,7 @@ const IntroHeader = () => {
       {/* <Grid container spacing={2}> */}
       <div className='flex mobile:flex-col largephone:flex-row items-center justify-between p-10'>
         <Image src={"/logo.png"} width={150} height={150} alt='Connectly Logo' className=''/>
-        <Button className = "!bg-[#CF9FFF] text-white hover:bg-[#800080] transition-all mobile:mt-5">Join Now</Button>
+        <Link href={"/sign-up"} className = "!bg-[#CF9FFF] p-3 rounded-md text-white hover:bg-[#800080] transition-all mobile:mt-5">Join Now</Link>
         </div>
        
      {/* </Grid> */}
@@ -33,7 +34,7 @@ const IntroHeader = () => {
           </div>
           <h1 className='text-7xl font-bold tracking-wider mobile:text-xl mobile:text-center largephone:tracking-normal tablet:text-left tablet:text-4xl laptop:text-5xl desktop:text-7xl'>Scaling Up Content <p className='!text-[#CF9FFF] mobile:text-4xl largephone:text-5xl desktop:text-7xl'>Influencer</p>Campaigns</h1>
           <p className='mt-5 mobile:text-justify'> <i>Welcome to <i className='text-[#CF9FFF] font-bold'>Connectly</i>, where connections flourish and every voice matters! Join us in sharing stories, discovering new perspectives, and building a vibrant community.</i></p>
-          <Button className = "!bg-[#CF9FFF] text-white hover:bg-[#800080] transition-all mt-5 mobile:block mobile:w-2/4 mobile:m-auto mobile:mt-5 mobile:mb-5 laptop:w-fit laptop:m-0 laptop:mt-5">Join Now</Button>
+          <Link href={"sign-up"} className = "!bg-[#CF9FFF] p-3 rounded-md text-white hover:bg-[#800080] transition-all mt-5 mobile:block mobile:w-2/4 mobile:m-auto mobile:mt-5 mobile:mb-5 laptop:w-fit laptop:m-0 laptop:mt-5">Join Now</Link>
           </Grid>
           <Grid size = {4}>
           <div className='largephone:block largephone:w-auto largephone:m-auto'>
