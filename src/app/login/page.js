@@ -1,5 +1,5 @@
 import React from 'react'
-import CheckBrowser from '../components/loginComponents/checkBrowser'
+import CheckBrowser from '../components/authComponents/checkBrowser'
 
 export const metadata = {
   title: "Login",
