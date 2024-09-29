@@ -10,10 +10,7 @@ import SignUpSection from './signUpSection';
 
 const CheckBrowser = () => {
   const windowDimension = useWindowDimensions()
-  const path = usePathname()
-
-  console.log(path, "path in check browser")
-  
+  const path = usePathname() 
   return (
     <>
     {path === "/login" ? (
