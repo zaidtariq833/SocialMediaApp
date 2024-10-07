@@ -11,31 +11,47 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useValidateEmail from '../../../../utils/hooks/useValidateEmail';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 
 const LoginSection = () => {
-  const emailUser  = useSelector((state) => state.user.emailUser)
-  console.log(emailUser, "email userss")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const { emailUser } = useSelector((state) => state.user)
+  const [emailVerified, setEmailVerified] = useState("")
+  const [emailErr, setEmailErr] = useState("")
+  const [passwordVerified, setPasswordVerified] = useState("")
+  const [passwordErr, setPasswordErr] = useState("")
+  const {push} = useRouter()
   const emailValidation = (e) => {
-    console.log(e.target.value, "event value")
-    setEmail(e.target.value)
-    const emailValidate = useValidateEmail(e.target.value)
-    console.log(emailValidate, "emails")
-    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const email = e.target.value
+    setEmailVerified(email)
+    console.log(email, "email verified")
+    if(email.match(emailRegex)){
+      setEmailErr("")
+    } else {
+      setEmailErr("Invalid Email Address!")
+    }
   }
-  console.log(email, "email target value")
-
   const passwordValidation = (e) => {
-    console.log(e.target.value, "password validation")
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const password = e.target.value
+    setPasswordVerified(password)
+    if(password.match(passwordRegex)){
+      setPasswordErr("")
+    } else{
+      setPasswordErr("Password must be at least 8 characters long, at least one lowercase letter, at least one uppercase letter, at least one special character")
+      setPasswordVerified(password)
+    }
   }
 
-  const submitUserDetails = () => {
-    alert("hello world")
+  const submitUserDetails = (e) => {
+    e.preventDefault()
+    push("/feed")
   }
 
-  const detailsCheck = email === "" || password === ""
+  const errorAuth = emailErr !== "" || passwordErr !== ""
+  const authEmpty = emailVerified === "" || passwordVerified === ""
+  const detailsCheck = errorAuth || authEmpty 
 
   return (
     <div className='border-red-400'>
@@ -48,9 +64,11 @@ const LoginSection = () => {
       onSubmit={submitUserDetails}
     >
       <div className= 'flex flex-col gap-8 !w-3/4 !mt-6 !m-auto' >
-      <TextField id="outlined-basic" label="Enter Email" variant="outlined" name = "email" value = {email} onChange={(e) => emailValidation(e)}/>
-      <TextField id="outlined-basic" label="Enter Password" variant="outlined" name = "password" value = {password} onChange={passwordValidation}/>
-      <Button className={`w-full text-nowrap text-sm p-3 flex gap-2 ${detailsCheck ? "!bg-slate-600" : "!bg-[#CF9FFF]"} !text-white select-none ${detailsCheck ? "!cursor-not-allowed" : "cursor-pointer"}`} disabled = {detailsCheck}>Login</Button>
+      <TextField id="outlined-basic" label="Enter Email" variant="outlined" name = "emailVerified" value = {emailVerified} onChange={(e) => emailValidation(e)}/>
+      {emailVerified !== "" && emailErr !== "" && <span className='error'>{emailErr}</span>}
+      <TextField id="outlined-basic" label="Enter Password" variant="outlined" name = "passwordVerified" value = {passwordVerified} onChange={(e) => passwordValidation(e)}/>
+      {passwordVerified !== "" && passwordErr !== "" && <span className='error'>{passwordErr}</span>}
+      <Button className={`w-full text-nowrap text-sm p-3 flex gap-2 ${detailsCheck ? "!bg-slate-600" : "!bg-[#CF9FFF]"} !text-white select-none ${detailsCheck ? "!cursor-not-allowed" : "cursor-pointer"}`} disabled = {detailsCheck} type='submit'>Login</Button>
       <Stack spacing={2}>
       <Button variant="contained" className='w-full text-nowrap text-sm p-3 flex gap-2 !bg-[#800080]'><GoogleIcon />Continue with Google</Button>
       <Button variant="contained" className='w-full text-sm p-3 text-nowrap flex gap-2 !bg-[#800080]'><LocalPhoneIcon/>Continue with Phone</Button>

@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { setEmailUser } from '../../redux/slices/loginSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const useValidateEmail = (email) => {
-    const dispatch = useDispatch()
+  // const {emailUser} = useSelector((state) => state.user)
+    const [emailVerify, setEmailVerify] = useState("")
+    // const dispatch = useDispatch()
     const ValidateEmail = (email) => {
         let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if (email.match(validRegex)) {
-          return true;
+          setEmailVerify(email)
+          return emailVerify;
         } else {
-          dispatch(setEmailUser("Invalid email address!"));
-          return false;      
+          setEmailVerify(email);
+          return emailVerify;      
         }
       }
 
   const validateEmail = ValidateEmail(email)
+  console.log(validateEmail, "validation of email")
   return validateEmail
 }
 

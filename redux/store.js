@@ -1,11 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { rootReducer } from './slices'
+// store/store.js
+import { configureStore } from "@reduxjs/toolkit";
+import loginReducer from "./slices/loginSlice";
 
-export const store = configureStore({
-  reducer: {
-    reducer: rootReducer
-  },
-//   middleware: [],
-  devTools: process.env.NODE_ENV !== 'production',
-})
+export function makeStore() {
+  return configureStore({
+    reducer: {
+      user: loginReducer,
+    },
+    devTools: process.env.NODE_ENV !== "production",
+  });
+}
 
+export const store = makeStore();
