@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -21,6 +21,7 @@
     "react-dom": "^18",
     "react-redux": "^9.1.2",
     "react-slick": "^0.30.2",
+    "react-toastify": "^10.0.5",
     "redux-persist": "^6.0.0",
     "slick-carousel": "^1.8.1"
   },

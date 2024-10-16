@@ -63,7 +63,7 @@ const CheckBrowser = () => {
        <Grid container spacing={2}>
          <Grid size={12}>
           <div className='p-7'>
-           <LoginSection />
+           <SignUpSection />
            </div>
          </Grid>
        </Grid>

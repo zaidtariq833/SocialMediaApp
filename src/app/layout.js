@@ -1,5 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import store from "../../redux/store"
+import {StoreProvider} from "../../redux/storeProvider"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,7 +20,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-auto`}
       >
+        <StoreProvider store = {store}>
         {children}
+        </StoreProvider>
       </body>
     </html>
   );
