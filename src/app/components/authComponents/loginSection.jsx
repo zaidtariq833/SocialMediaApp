@@ -15,7 +15,6 @@ import { useRouter } from 'next/navigation';
 
 
 const LoginSection = () => {
-  const { emailUser } = useSelector((state) => state.user)
   const [emailVerified, setEmailVerified] = useState("")
   const [emailErr, setEmailErr] = useState("")
   const [passwordVerified, setPasswordVerified] = useState("")
@@ -66,7 +65,7 @@ const LoginSection = () => {
       <div className= 'flex flex-col gap-8 !w-3/4 !mt-6 !m-auto' >
       <TextField id="outlined-basic" label="Enter Email" variant="outlined" name = "emailVerified" value = {emailVerified} onChange={(e) => emailValidation(e)}/>
       {emailVerified !== "" && emailErr !== "" && <span className='error'>{emailErr}</span>}
-      <TextField id="outlined-basic" label="Enter Password" variant="outlined" name = "passwordVerified" value = {passwordVerified} onChange={(e) => passwordValidation(e)}/>
+      <TextField id="outlined-basic" label="Enter Password" type='password' variant="outlined" name = "passwordVerified" value = {passwordVerified} onChange={(e) => passwordValidation(e)}/>     
       {passwordVerified !== "" && passwordErr !== "" && <span className='error'>{passwordErr}</span>}
       <Button className={`w-full text-nowrap text-sm p-3 flex gap-2 ${detailsCheck ? "!bg-slate-600" : "!bg-[#CF9FFF]"} !text-white select-none ${detailsCheck ? "!cursor-not-allowed" : "cursor-pointer"}`} disabled = {detailsCheck} type='submit'>Login</Button>
       <Stack spacing={2}>
